@@ -93,7 +93,7 @@ export default Weather;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    //     marginTop: 20,
   },
   backgroundImageStyle: {
     flex: 1,
