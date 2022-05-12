@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import React, { useState, useEffect } from "react";
 import Weather from "../../components/Weather";
+import Search from "../../components/Search";
 
 const API_KEY = "0d931a97409e61ebe2d94c1c67085563";
 
@@ -36,11 +37,18 @@ const Home = () => {
     );
   }
   if (weatherData === null) {
-    return <View></View>;
+    return (
+      <View style={styles.container}>
+        <Search fetchWeatherData={fetchWeatherData} />
+        <Text style={{ margin: 10, fontSize: 20, color: "red" }}>
+          City Not Found ! Try Different City
+        </Text>
+      </View>
+    );
   }
   return (
     <View style={styles.container}>
-      <Weather weatherData={weatherData} />
+      <Weather weatherData={weatherData} fetchWeatherData={fetchWeatherData} />
     </View>
   );
 };

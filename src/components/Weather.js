@@ -9,12 +9,13 @@ import React, { useState, useEffect } from "react";
 import { haze, rainy, snow, sunny } from "../../assets";
 import Search from "./Search";
 
-const Weather = ({ weatherData }) => {
+const Weather = ({ weatherData, fetchWeatherData }) => {
   //   console.log(weatherData);
   const {
     weather,
     name,
     main: { temp, humidity },
+    wind: { speed },
   } = weatherData;
   const [{ main }] = weather;
   //   console.log(main);
@@ -42,8 +43,8 @@ const Weather = ({ weatherData }) => {
         style={styles.backgroundImageStyle}
         resizeMode="cover"
       >
-        <Search />
-        <View style={{ alignItems: "center" }}>
+        <Search fetchWeatherData={fetchWeatherData} />
+        <View style={{ alignItems: "center", marginTop: 60 }}>
           <Text
             style={{
               ...styles.textStyle,
@@ -67,6 +68,22 @@ const Weather = ({ weatherData }) => {
             {temp} °C
           </Text>
         </View>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            marginTop: 40,
+          }}
+        >
+          <View style={styles.info}>
+            <Text style={{ fontSize: 20, color: "white" }}>Humidity</Text>
+            <Text style={{ fontSize: 20, color: "white" }}>{humidity} %</Text>
+          </View>
+          <View style={styles.info}>
+            <Text style={{ fontSize: 20, color: "white" }}>Wind Speed</Text>
+            <Text style={{ fontSize: 20, color: "white" }}>{speed} m/s</Text>
+          </View>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -84,5 +101,12 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontSize: 30,
+  },
+  info: {
+    width: Dimensions.get("screen").width / 2.5,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    padding: 10,
+    borderRadius: 10,
+    justifyContent: "center",
   },
 });
