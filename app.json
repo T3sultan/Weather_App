@@ -3,7 +3,9 @@
     "name": "Weather_App",
     "slug": "Weather_App",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
+    "privacy": "public",
+    "description": "It's Current weather data Api call make search city name & find the temp and other advantages",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -14,9 +16,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
